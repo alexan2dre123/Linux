@@ -14,7 +14,7 @@ printf "
 
 "
 
-printf "Select a Distro\n1) Arch Linux\n2) Ubuntu 20.04+\n3) Debian 11\n4) PopOS 20.04+\n0) Exit\nType a option: "
+printf "Select a Distro\n1) Arch Linux\n2) Ubuntu 22.04+\n3) Debian 11\n4) PopOS 22.04+\n0) Exit\nType a option: "
 read -r distro
 
 while [[ "$distro" -ne "0" ]]
@@ -33,7 +33,7 @@ do
                 then
                     clear
                     echo "Arch Linux"
-                    printf "1) Browsers\n2) Base Pack\n3) Gaming Pack\n4) Emulation Pack\n0) Exit\nSelect a option: "
+                    printf "1) Browsers\n2) Base Pack\n3) Gaming Pack\n4) Emulation Pack\n5) Custom Kernels\n0) Exit\nSelect a option: "
                     read -r arch
                     case $arch in
                         1)
@@ -87,7 +87,9 @@ do
                         3)
                             clear
                             echo "Installing Gaming Pack..."; sleep 2
-                            sudo pacman -S steam wine-staging winetricks giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox lutris gamemode lib32-gamemode mangohud lib32-mangohud goverlay protontricks-git
+                            sudo pacman -S sudo pacman -S wine-staging winetricks --noconfirm
+                            sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox --noconfirm
+                            sudo pacman -S gamemode lib32-gamemode steam lutris goverlay mangohud lib32-mangohud heroic-games-launcher-bin --noconfirm 
                             echo "Done"; sleep 2
                         ;;
                         4)
@@ -96,9 +98,18 @@ do
                             sudo pacman -S pcsx2 rpcs3-git dolphin-emu desmume duckstation-git citra-canary-git yuzu-mainline-bin mgba-qt ppsspp reicast mupen64plus sameboy
                             echo "Done"; sleep 2
                         ;;
-                        0)
-                            exit
+                        5) 
+                            clear
+                            printf "Choose a Kernel\n1) xanmod-edge\n2) linux-tkg-bmq\n3) linux-tkg-pds\n4) linux-zen\nSelect a option: "
+                            read -r kernel
+                            case $kernel in
+                                1) sudo pacman -S linux-xanmod-edge linux-xanmod-edge-headers;;
+                                2) sudo pacman -S linux-tkg-bmq linux-tkg-bmq-headers;;
+                                3) sudo pacman -S linux-tkg-pds linux-tkg-pds-headers;;
+                                4) sudo pacman -S linux-zen linux-zen-headers;;
+                            esac
                         ;;
+                        0) exit;;
                     esac
                 else
                     echo 'Installing Chaotic AUR...'; sleep 2
@@ -114,7 +125,7 @@ do
         ;;
         2)
             clear
-            echo "Ubuntu 20.04+"
+            echo "Ubuntu 22.04+"
             printf "1) Browsers\n2) Base Pack\n3) Gaming Pack\n4) Remove Snap\n0) Exit\nSelect a option: "
             read -r ubu
             case $ubu in
@@ -292,7 +303,7 @@ do
         ;;
         4)
             clear
-            echo "Pop OS 20.04+"
+            echo "Pop OS 22.04+"
             printf "1) Browsers\n2) Base Pack\n3) Gaming Pack\n0) Exit\nType a option: "
             read -r pop
             case $pop in
