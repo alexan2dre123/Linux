@@ -14,7 +14,7 @@ printf "
 
 "
 
-printf "Select a Distro\n1) Arch Linux\n2) Ubuntu 22.04+\n3) Debian 11\n4) PopOS 22.04+\n0) Exit\nType a option: "
+printf "Select a Distro\n1) Arch Linux\n2) Ubuntu 22.04\n3) Debian 11\n4) PopOS 22.04\n0) Exit\nType a option: "
 read -r distro
 
 while [[ "$distro" -ne "0" ]]
@@ -116,19 +116,17 @@ do
 		            sudo pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
 	                sudo pacman-key --lsign-key FBA220DFC880C036
 		            sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-                    echo '
-                    [chaotic-aur]
-                    Include = /etc/pacman.d/chaotic-mirrorlist
-                    ' | sudo tee -a  /etc/pacman.conf
+                    echo -e '[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a  /etc/pacman.conf
+                    clear
                     echo 'Updating mirrors...' ; sleep 2
-                    sudo pacman -Syyuu
-                    echo 'Done' ; sleep 3
+                    sudo pacman -Syu
+                    echo 'Done.' ; sleep 3
                 fi
             fi
         ;;
         2)
             clear
-            echo "Ubuntu 22.04+"
+            echo "Ubuntu 22.04"
             printf "1) Browsers\n2) Base Pack\n3) Gaming Pack\n4) Remove Snap\n0) Exit\nSelect a option: "
             read -r ubu
             case $ubu in
@@ -172,7 +170,6 @@ do
                     clear
                     sudo apt update && sudo apt upgrade
                     echo "Installing Base Pack..."; sleep 2
-                    echo "If you deslike an app, you can remove via apt or the built in store."; sleep 5
                     sudo apt install telegram-desktop htop breeze neofetch vlc gnome-disk-utility qbittorrent baobab youtube-dl papirus-icon-theme fonts-noto fonts-noto-cjk fonts-noto-extra fonts-noto-color-emoji
                     wget "https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.deb"
                     sudo apt install ./discord-0.0.17.deb
@@ -187,13 +184,10 @@ do
                     echo "Installing Gaming Pack..."; sleep 2
                     sudo apt install steam 
                     sudo dpkg --add-architecture i386
-                    wget -nc https://dl.winehq.org/wine-builds/winehq.key
-                    sudo apt-key add winehq.key
-                    sudo apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/'
-                    mv winehq.key ~
+                    sudo wget -nc -O /usr/share/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                    sudo wget -nc -P /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
                     sudo apt update
-                    sudo apt install --install-recommends winehq-staging
-                    sudo apt install winetricks
+                    sudo apt install --install-recommends winehq-staging winetricks
                     sudo add-apt-repository ppa:lutris-team/lutris
                     sudo apt update
                     sudo apt install lutris
@@ -306,7 +300,7 @@ do
         ;;
         4)
             clear
-            echo "Pop OS 22.04+"
+            echo "Pop OS 22.04"
             printf "1) Browsers\n2) Base Pack\n3) Gaming Pack\n0) Exit\nType a option: "
             read -r pop
             case $pop in
@@ -353,7 +347,6 @@ do
                 ;;
                 3)
                     echo "Installing Gaming Pack.."; sleep 2
-                    flatpak install app/com.valvesoftware.Steam/x86_64/stable
                     clear
                     cd /tmp/ || exit
                     wget "https://github.com/flightlessmango/MangoHud/releases/download/v0.6.5/MangoHud-0.6.5.r0.ge42002c.tar.gz"
@@ -361,14 +354,13 @@ do
                     cd MangoHud/ || exit
                     ./mangohud-setup.sh install
                     clear
+                    sudo apt install steam
                     sudo dpkg --add-architecture i386
-                    wget -nc https://dl.winehq.org/wine-builds/winehq.key
-                    sudo apt-key add winehq.key
-                    sudo apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/'
+                    sudo wget -nc -O /usr/share/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                    sudo wget -nc -P /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
                     sudo apt update
-                    sudo apt install --install-recommends winehq-staging
-                    sudo apt install winetricks
-                    sudo apt install lutris
+                    sudo apt install --install-recommends winehq-staging winetricks -y
+                    sudo apt install lutris -y
                     echo "Done"; sleep 2
                 ;;
                 0) 
