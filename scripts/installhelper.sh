@@ -82,7 +82,7 @@ do
                         2)
                             clear
                             echo "Installing Base Pack..."; sleep 2
-                            sudo pacman -S papirus-icon-theme numix-circle-icon-theme-git telegram-desktop discord htop neofetch obs-studio breeze kdenlive code vlc qbittorrent gnome-disk-utility baobab ksysguard teamviewer noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk youtube-dl ttf-fira-mono inter-font flatpak glu curl wget dnsmasq openresolv
+                            sudo pacman -S papirus-icon-theme telegram-desktop discord htop neofetch obs-studio breeze kdenlive visual-studio-code-bin vlc qbittorrent gnome-disk-utility baobab gnome-logs teamviewer noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk youtube-dl ttf-fira-mono inter-font flatpak glu curl wget dnsmasq openresolv ttf-ubuntu-font-family ttf-font-awesome-4 gnome-system-monitor psensor
                         ;;
                         3)
                             clear
