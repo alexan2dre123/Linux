@@ -1,14 +1,14 @@
 * {
   font:   "Iosevka Nerd Font Medium 11";
 
-  bg0     : #1a1b26;
-  bg1     : #1f2335;
-  bg2     : #24283b;
-  bg3     : #414868;
-  fg0     : #c0caf5;
-  fg1     : #a9b1d6;
-  fg2     : #737aa2;
-  red     : #f7768e;
+  bg0     : #171A1F;
+  bg1     : #131519;
+  bg2     : #171A1F;
+  bg3     : #171A1F;
+  fg0     : #A8A8A8;
+  fg1     : #A8A8A8;
+  fg2     : #A8A8A8;
+  red     : #95B8B8;
   green   : #9ece6a;
   yellow  : #e0af68;
   blue    : #7aa2f7;
@@ -31,22 +31,13 @@ element-icon, element-text, scrollbar {
 }
 
 window {
-  location : northwest;
-  width    : 280px;
-  x-offset : 4px;
-  y-offset : 26px;
-
   background-color: @bg1;
-  border: 1px;
-  border-color: @bg3;
-  border-radius: 6px;
 }
 
 inputbar {
   spacing  : 8px;
   padding  : 4px 8px;
   children : [ icon-search, entry ];
-
   background-color: @bg0;
 }
 

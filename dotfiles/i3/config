@@ -181,47 +181,36 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        status_command i3status
-#}
-
 bar {
   position bottom
   status_command i3blocks
   font pango: Fira Mono Bold 12
   colors {
-        background #212121
-        statusline #0000
-
-        focused_workspace  #ffffff #f07178
-        active_workspace   #ffffff #f07178
-        inactive_workspace #888888 #222222
+        background #131519
+        statusline #95B8B8
+        focused_workspace  #95B8B8 #171A1F
+        active_workspace   #95B8B8 #171A1F
+        inactive_workspace #A8A8A8 #171A1F
         urgent_workspace   #ffffff #900000
     }
 }
 
-# exec polkit
+# polkit-gui
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 
 # Gaps
 gaps inner 5
 gaps outer 5
 
-#Hide titlebar
 for_window [class="^.*"] border pixel 0
 default_border pixel 0
 default_floating_border pixel 0
 
-#Screenshot
+# Screenshot
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
-#Wallpaper
-exec_always --no-startup-id feh --bg-fill /home/reborn/Pictures/wallpaper.jpg
+# Wallpaper
+exec_always --no-startup-id feh --bg-fill /home/$USER/Pictures/wallpaper.jpg
 
-#Compositor
-exec_always --no-startup-id picom
-#Disable Compositor
-bindsym $mod+Shift+F12 exec killall picom
