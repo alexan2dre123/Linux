@@ -1,1 +1,1 @@
-@theme "/home/$USER/.config/rofi/themes/simple-tokyonight.rasi"
+@theme "~/.config/rofi/themes/simple-tokyonight.rasi"
