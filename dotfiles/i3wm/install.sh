@@ -17,7 +17,7 @@ cp -r i3 "$configPath"
 cp -r i3blocks "$configPath"
 cp -r rofi "$configPath"
 cp -r wallpaper.jpg "/home/$USER/Pictures/"
-cp -r .gtkrc-2.0.mine "/home/$USER/"
+cp -r .gtkrc-2.0 "/home/$USER/"
 printf " Done!"; sleep 3
 
 
