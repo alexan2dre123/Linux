@@ -12,15 +12,12 @@ do
                 echo "You need to enable the arch multilib repository to be able to use this script."; sleep 5
                 clear
                 echo "Check Here: https://wiki.archlinux.org/title/official_repositories#Enabling_multilib"; sleep 10
-                exit
             else
                 if test -f "/etc/pacman.d/chaotic-mirrorlist"
                 then
                     clear
-                    echo "Installing Base Pack..."; sleep 2
+                    echo "Installing..."; sleep 2
                     sudo pacman -S firefox papirus-icon-theme telegram-desktop discord htop neofetch obs-studio breeze kdenlive code vlc qbittorrent gnome-disk-utility gnome-logs noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk flatpak curl wget psensor ncdu --noconfirm
-                    clear
-                    echo "Installing Steam/Wine/Lutris/Heroic/Mangohud"; sleep 2
                     sudo pacman -S wine-staging winetricks --noconfirm
                     sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox --noconfirm
                     sudo pacman -S steam lutris heroic-games-launcher-bin --noconfirm
@@ -31,6 +28,7 @@ do
                     cd MangoHud/ || exit
                     ./mangohud-setup.sh install
                     clear
+                    exit
                 else
                     echo 'You do not have Chaotic AUR installed. Installing...'; sleep 2
 		            sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
